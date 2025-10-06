@@ -642,7 +642,7 @@ function App() {
 
       {/* Valuation Tool Dialog */}
       <Dialog open={showValuationTool} onOpenChange={setShowValuationTool}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 !max-w-[100vw] !w-[100vw] !max-h-[100vh] !h-[100vh] overflow-y-auto !m-0 !p-0 rounded-none fixed inset-0 !left-0 !top-0 !right-0 !bottom-0">
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 !max-w-none !w-screen !max-h-none !h-screen overflow-y-auto !m-0 !p-6 rounded-none !fixed !inset-0 !transform-none !translate-x-0 !translate-y-0">
           <DialogHeader>
             <DialogTitle className="text-4xl font-light text-white mb-4">Professionelle Unternehmensbewertung</DialogTitle>
           </DialogHeader>
