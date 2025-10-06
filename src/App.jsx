@@ -381,6 +381,95 @@ function App() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Mobile Slides */}
+          <div className="md:hidden overflow-x-auto">
+            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <TrendingUp className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Umsatz: 500K - 10M EUR</li>
+                    <li>• Mitarbeiter: 5 - 100</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Building className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Handwerk</li>
+                    <li>• Bau</li>
+                    <li>• Industrie</li>
+                    <li>• Dienstleistung</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <MapPin className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Bayern (Schwerpunkt)</li>
+                    <li>• München & Umgebung</li>
+                    <li>• Traditionelle Wirtschaftsregionen</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Handshake className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Mehrheitsbeteiligungen</li>
+                    <li>• Minderheitsbeteiligungen</li>
+                    <li>• Je nach Absprache</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <TrendingUp className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Etablierte Unternehmen</li>
+                    <li>• Junge Unternehmen</li>
+                    <li>• Start-ups mit Potenzial</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Target className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Nachfolgeproblematik</li>
+                    <li>• Wachstumsfinanzierung</li>
+                    <li>• Überwindung von Stagnation</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -393,7 +482,8 @@ function App() {
             </h2>
             <p className="text-xl text-slate-300">Passgenaue Lösungen für Ihr Unternehmen</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-center gap-4 mb-6">
@@ -478,6 +568,95 @@ function App() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Mobile Slides */}
+          <div className="md:hidden overflow-x-auto">
+            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <TrendingUp className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Umsatz: 500K - 10M EUR</li>
+                    <li>• Mitarbeiter: 5 - 100</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Building className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Handwerk</li>
+                    <li>• Bau</li>
+                    <li>• Industrie</li>
+                    <li>• Dienstleistung</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <MapPin className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Bayern (Schwerpunkt)</li>
+                    <li>• München & Umgebung</li>
+                    <li>• Traditionelle Wirtschaftsregionen</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Handshake className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Mehrheitsbeteiligungen</li>
+                    <li>• Minderheitsbeteiligungen</li>
+                    <li>• Je nach Absprache</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <TrendingUp className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Etablierte Unternehmen</li>
+                    <li>• Junge Unternehmen</li>
+                    <li>• Start-ups mit Potenzial</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Target className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Nachfolgeproblematik</li>
+                    <li>• Wachstumsfinanzierung</li>
+                    <li>• Überwindung von Stagnation</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -540,6 +719,213 @@ function App() {
                 </p>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Mobile Slides */}
+          <div className="md:hidden overflow-x-auto">
+            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <TrendingUp className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Umsatz: 500K - 10M EUR</li>
+                    <li>• Mitarbeiter: 5 - 100</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Building className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Handwerk</li>
+                    <li>• Bau</li>
+                    <li>• Industrie</li>
+                    <li>• Dienstleistung</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <MapPin className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Bayern (Schwerpunkt)</li>
+                    <li>• München & Umgebung</li>
+                    <li>• Traditionelle Wirtschaftsregionen</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Handshake className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Mehrheitsbeteiligungen</li>
+                    <li>• Minderheitsbeteiligungen</li>
+                    <li>• Je nach Absprache</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <TrendingUp className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Etablierte Unternehmen</li>
+                    <li>• Junge Unternehmen</li>
+                    <li>• Start-ups mit Potenzial</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Target className="w-8 h-8 text-slate-300" />
+                    <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
+                  </div>
+                  <ul className="space-y-3 text-slate-300">
+                    <li>• Nachfolgeproblematik</li>
+                    <li>• Wachstumsfinanzierung</li>
+                    <li>• Überwindung von Stagnation</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Investment Process Section */}
+      <section className="py-24 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight text-white">
+              Unser Investitionsprozess
+            </h2>
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto">
+              Transparent, professionell und partnerschaftlich – so gestalten wir unsere Beteiligungen.
+            </p>
+          </div>
+          
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-white">1</span>
+                </div>
+                <h3 className="text-xl font-medium text-white mb-4">Erstgespräch</h3>
+                <p className="text-slate-300 leading-relaxed">
+                  Unverbindliches Kennenlernen und Potenzialanalyse
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-xl font-medium text-white mb-4">Due Diligence</h3>
+                <p className="text-slate-300 leading-relaxed">
+                  Detaillierte Prüfung und Bewertung des Unternehmens
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-xl font-medium text-white mb-4">Verhandlung</h3>
+                <p className="text-slate-300 leading-relaxed">
+                  Faire Strukturierung der Beteiligung
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-white">4</span>
+                </div>
+                <h3 className="text-xl font-medium text-white mb-4">Partnerschaft</h3>
+                <p className="text-slate-300 leading-relaxed">
+                  Langfristige Zusammenarbeit und Entwicklung
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Mobile Slides */}
+          <div className="md:hidden overflow-x-auto">
+            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">1</span>
+                  </div>
+                  <h3 className="text-xl font-medium text-white mb-4">Erstgespräch</h3>
+                  <p className="text-slate-300 leading-relaxed">
+                    Unverbindliches Kennenlernen und Potenzialanalyse
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">2</span>
+                  </div>
+                  <h3 className="text-xl font-medium text-white mb-4">Due Diligence</h3>
+                  <p className="text-slate-300 leading-relaxed">
+                    Detaillierte Prüfung und Bewertung des Unternehmens
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">3</span>
+                  </div>
+                  <h3 className="text-xl font-medium text-white mb-4">Verhandlung</h3>
+                  <p className="text-slate-300 leading-relaxed">
+                    Faire Strukturierung der Beteiligung
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">4</span>
+                  </div>
+                  <h3 className="text-xl font-medium text-white mb-4">Partnerschaft</h3>
+                  <p className="text-slate-300 leading-relaxed">
+                    Langfristige Zusammenarbeit und Entwicklung
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
