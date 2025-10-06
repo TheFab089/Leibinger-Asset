@@ -752,9 +752,9 @@ function App() {
             <div>
               <h3 className="text-lg font-medium mb-3 text-white">Angaben gemäß § 5 TMG</h3>
               <p className="leading-relaxed">
-                <strong>Leibinger Asset Management</strong><br />
-                Musterstraße 123<br />
-                80331 München<br />
+                <strong>Leibinger Asset Management GmbH</strong><br />
+                Herterichstr. 174<br />
+                81476 München<br />
                 Deutschland
               </p>
             </div>
@@ -762,7 +762,6 @@ function App() {
             <div>
               <h3 className="text-lg font-medium mb-3 text-white">Kontakt</h3>
               <p className="leading-relaxed">
-                Telefon: +49 (0) 89 123 456 789<br />
                 E-Mail: fl@leibinger-am.de
               </p>
             </div>
@@ -770,7 +769,7 @@ function App() {
             <div>
               <h3 className="text-lg font-medium mb-3 text-white">Vertretungsberechtigte Geschäftsführung</h3>
               <p className="leading-relaxed">
-                Florian Leibinger
+                Fabian Leibinger
               </p>
             </div>
             
@@ -779,15 +778,14 @@ function App() {
               <p className="leading-relaxed">
                 Eintragung im Handelsregister<br />
                 Registergericht: Amtsgericht München<br />
-                Registernummer: HRB 123456
+                Registernummer: HRB 289101
               </p>
             </div>
             
             <div>
               <h3 className="text-lg font-medium mb-3 text-white">Umsatzsteuer-ID</h3>
               <p className="leading-relaxed">
-                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-                DE123456789
+                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: (Nicht angegeben im HR Register)
               </p>
             </div>
             
