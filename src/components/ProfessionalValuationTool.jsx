@@ -134,89 +134,89 @@ const ProfessionalValuationTool = ({ isOpen }) => {
       case 1:
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <Building className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-medium mb-2">Unternehmensdaten</h3>
-              <p className="text-slate-400">Grundlegende Informationen zu Ihrem Unternehmen</p>
+            <div className="text-center mb-10">
+              <Building className="w-16 h-16 text-slate-200 mx-auto mb-6" />
+              <h3 className="text-3xl font-medium mb-3 text-white">Unternehmensdaten</h3>
+              <p className="text-lg text-slate-300">Grundlegende Informationen zu Ihrem Unternehmen</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium mb-2">Unternehmensname *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Unternehmensname *</label>
                 <Input
                   value={formData.companyName}
                   onChange={(e) => handleInputChange('companyName', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="Ihr Unternehmensname"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Branche *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Branche *</label>
                 <Select value={formData.industry} onValueChange={(value) => handleInputChange('industry', value)}>
-                  <SelectTrigger className="bg-slate-800 border-slate-700 text-slate-100">
-                    <SelectValue placeholder="Wählen Sie Ihre Branche" />
+                  <SelectTrigger className="bg-slate-800 border-slate-600 text-slate-100 text-base py-3">
+                    <SelectValue placeholder="Wählen Sie Ihre Branche" className="text-slate-400" />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-800 border-slate-700">
-                    <SelectItem value="handwerk" className="text-slate-100">Handwerk</SelectItem>
-                    <SelectItem value="produktion" className="text-slate-100">Produktion</SelectItem>
-                    <SelectItem value="handel" className="text-slate-100">Handel</SelectItem>
-                    <SelectItem value="dienstleistung" className="text-slate-100">Dienstleistung</SelectItem>
-                    <SelectItem value="technologie" className="text-slate-100">Technologie</SelectItem>
-                    <SelectItem value="software" className="text-slate-100">Software</SelectItem>
+                  <SelectContent className="bg-slate-800 border-slate-600">
+                    <SelectItem value="handwerk" className="text-slate-100 text-base">Handwerk</SelectItem>
+                    <SelectItem value="produktion" className="text-slate-100 text-base">Produktion</SelectItem>
+                    <SelectItem value="handel" className="text-slate-100 text-base">Handel</SelectItem>
+                    <SelectItem value="dienstleistung" className="text-slate-100 text-base">Dienstleistung</SelectItem>
+                    <SelectItem value="technologie" className="text-slate-100 text-base">Technologie</SelectItem>
+                    <SelectItem value="software" className="text-slate-100 text-base">Software</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               <div>
-                <label className="block text-sm font-medium mb-2">Standort (Stadt) *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Standort (Stadt) *</label>
                 <Input
                   value={formData.location}
                   onChange={(e) => handleInputChange('location', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="München"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Gründungsjahr *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Gründungsjahr *</label>
                 <Input
                   type="number"
                   value={formData.foundingYear}
                   onChange={(e) => handleInputChange('foundingYear', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="2010"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Rechtsform</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Rechtsform</label>
                 <Input
                   value={formData.legalForm}
                   onChange={(e) => handleInputChange('legalForm', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="GmbH"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Anzahl Mitarbeiter</label>
+              <label className="block text-base font-medium mb-3 text-slate-200">Anzahl Mitarbeiter</label>
               <Input
                 type="number"
                 value={formData.employees}
                 onChange={(e) => handleInputChange('employees', e.target.value)}
-                className="bg-slate-800 border-slate-700 text-slate-100"
+                className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                 placeholder="25"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Geschäftsmodell (kurz)</label>
+              <label className="block text-base font-medium mb-3 text-slate-200">Geschäftsmodell (kurz)</label>
               <Textarea
                 value={formData.businessModel}
                 onChange={(e) => handleInputChange('businessModel', e.target.value)}
-                className="bg-slate-800 border-slate-700 text-slate-100"
-                rows={3}
+                className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
+                rows={4}
                 placeholder="Beschreiben Sie kurz Ihr Geschäftsmodell..."
               />
             </div>
@@ -226,76 +226,76 @@ const ProfessionalValuationTool = ({ isOpen }) => {
       case 2:
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <Calculator className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-medium mb-2">Finanzdaten</h3>
-              <p className="text-slate-400">Aktuelle Kennzahlen Ihres Unternehmens</p>
+            <div className="text-center mb-10">
+              <Calculator className="w-16 h-16 text-slate-200 mx-auto mb-6" />
+              <h3 className="text-3xl font-medium mb-3 text-white">Finanzdaten</h3>
+              <p className="text-lg text-slate-300">Aktuelle Kennzahlen Ihres Unternehmens</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium mb-2">Jahresumsatz (EUR) *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Jahresumsatz (EUR) *</label>
                 <Input
                   type="number"
                   value={formData.revenue}
                   onChange={(e) => handleInputChange('revenue', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="1500000"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Umsatzwachstum (%)</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Umsatzwachstum (%)</label>
                 <Input
                   type="number"
                   value={formData.revenueGrowth}
                   onChange={(e) => handleInputChange('revenueGrowth', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="15"
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium mb-2">EBITDA (EUR) *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">EBITDA (EUR) *</label>
                 <Input
                   type="number"
                   value={formData.ebitda}
                   onChange={(e) => handleInputChange('ebitda', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="300000"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">EBITDA-Marge (%)</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">EBITDA-Marge (%)</label>
                 <Input
                   type="number"
                   value={formData.ebitdaMargin}
                   onChange={(e) => handleInputChange('ebitdaMargin', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="20"
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium mb-2">Bilanzsumme (EUR)</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Bilanzsumme (EUR)</label>
                 <Input
                   type="number"
                   value={formData.assets}
                   onChange={(e) => handleInputChange('assets', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="800000"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Verbindlichkeiten (EUR)</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Verbindlichkeiten (EUR)</label>
                 <Input
                   type="number"
                   value={formData.liabilities}
                   onChange={(e) => handleInputChange('liabilities', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
                   placeholder="200000"
                 />
               </div>
@@ -306,68 +306,70 @@ const ProfessionalValuationTool = ({ isOpen }) => {
       case 3:
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <TrendingUp className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-medium mb-2">Markt & Wettbewerb</h3>
-              <p className="text-slate-400">Positionierung und Wettbewerbsvorteile</p>
+            <div className="text-center mb-10">
+              <TrendingUp className="w-16 h-16 text-slate-200 mx-auto mb-6" />
+              <h3 className="text-3xl font-medium mb-3 text-white">Markt & Wettbewerb</h3>
+              <p className="text-lg text-slate-300">Positionierung und Wettbewerbsvorteile</p>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Marktposition *</label>
-              <Select value={formData.marketPosition} onValueChange={(value) => handleInputChange('marketPosition', value)}>
-                <SelectTrigger className="bg-slate-800 border-slate-700 text-slate-100">
-                  <SelectValue placeholder="Wählen Sie Ihre Marktposition" />
-                </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-slate-700">
-                  <SelectItem value="marktfuehrer" className="text-slate-100">Marktführer</SelectItem>
-                  <SelectItem value="stark" className="text-slate-100">Starke Position</SelectItem>
-                  <SelectItem value="etabliert" className="text-slate-100">Etabliert</SelectItem>
-                  <SelectItem value="nische" className="text-slate-100">Nischenplayer</SelectItem>
-                  <SelectItem value="herausforderer" className="text-slate-100">Herausforderer</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <div className="space-y-8">
+              <div>
+                <label className="block text-base font-medium mb-3 text-slate-200">Marktposition *</label>
+                <Select value={formData.marketPosition} onValueChange={(value) => handleInputChange('marketPosition', value)}>
+                  <SelectTrigger className="bg-slate-800 border-slate-600 text-slate-100 text-base py-3">
+                    <SelectValue placeholder="Wählen Sie Ihre Marktposition" className="text-slate-400" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-800 border-slate-600">
+                    <SelectItem value="marktfuehrer" className="text-slate-100 text-base">Marktführer</SelectItem>
+                    <SelectItem value="stark" className="text-slate-100 text-base">Starke Position</SelectItem>
+                    <SelectItem value="etabliert" className="text-slate-100 text-base">Etabliert</SelectItem>
+                    <SelectItem value="nische" className="text-slate-100 text-base">Nischenplayer</SelectItem>
+                    <SelectItem value="herausforderer" className="text-slate-100 text-base">Herausforderer</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Hauptwettbewerbsvorteile *</label>
-              <Textarea
-                value={formData.competitiveAdvantage}
-                onChange={(e) => handleInputChange('competitiveAdvantage', e.target.value)}
-                className="bg-slate-800 border-slate-700 text-slate-100"
-                rows={4}
-                placeholder="Beschreiben Sie Ihre wichtigsten Wettbewerbsvorteile..."
-              />
-            </div>
+              <div>
+                <label className="block text-base font-medium mb-3 text-slate-200">Hauptwettbewerbsvorteile *</label>
+                <Textarea
+                  value={formData.competitiveAdvantage}
+                  onChange={(e) => handleInputChange('competitiveAdvantage', e.target.value)}
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
+                  rows={5}
+                  placeholder="Beschreiben Sie Ihre wichtigsten Wettbewerbsvorteile..."
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Kundenbasis</label>
-              <Select value={formData.customerBase} onValueChange={(value) => handleInputChange('customerBase', value)}>
-                <SelectTrigger className="bg-slate-800 border-slate-700 text-slate-100">
-                  <SelectValue placeholder="Beschreiben Sie Ihre Kundenbasis" />
-                </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-slate-700">
-                  <SelectItem value="b2b_gross" className="text-slate-100">B2B - Großkunden</SelectItem>
-                  <SelectItem value="b2b_mittel" className="text-slate-100">B2B - Mittelstand</SelectItem>
-                  <SelectItem value="b2b_klein" className="text-slate-100">B2B - Kleinbetriebe</SelectItem>
-                  <SelectItem value="b2c" className="text-slate-100">B2C - Endkunden</SelectItem>
-                  <SelectItem value="gemischt" className="text-slate-100">Gemischt</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+              <div>
+                <label className="block text-base font-medium mb-3 text-slate-200">Kundenbasis</label>
+                <Select value={formData.customerBase} onValueChange={(value) => handleInputChange('customerBase', value)}>
+                  <SelectTrigger className="bg-slate-800 border-slate-600 text-slate-100 text-base py-3">
+                    <SelectValue placeholder="Beschreiben Sie Ihre Kundenbasis" className="text-slate-400" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-800 border-slate-600">
+                    <SelectItem value="b2b_gross" className="text-slate-100 text-base">B2B - Großkunden</SelectItem>
+                    <SelectItem value="b2b_mittel" className="text-slate-100 text-base">B2B - Mittelstand</SelectItem>
+                    <SelectItem value="b2b_klein" className="text-slate-100 text-base">B2B - Kleinbetriebe</SelectItem>
+                    <SelectItem value="b2c" className="text-slate-100 text-base">B2C - Endkunden</SelectItem>
+                    <SelectItem value="gemischt" className="text-slate-100 text-base">Gemischt</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Marktwachstum</label>
-              <Select value={formData.marketGrowth} onValueChange={(value) => handleInputChange('marketGrowth', value)}>
-                <SelectTrigger className="bg-slate-800 border-slate-700 text-slate-100">
-                  <SelectValue placeholder="Wie entwickelt sich Ihr Markt?" />
-                </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-slate-700">
-                    <SelectItem value="stark_wachsend" className="text-slate-100">Stark wachsend (&gt;10%)</SelectItem>
-                  <SelectItem value="wachsend" className="text-slate-100">Wachsend (5-10%)</SelectItem>
-                  <SelectItem value="stabil" className="text-slate-100">Stabil (0-5%)</SelectItem>
-                  <SelectItem value="schrumpfend" className="text-slate-100">Schrumpfend</SelectItem>
-                </SelectContent>
-              </Select>
+              <div>
+                <label className="block text-base font-medium mb-3 text-slate-200">Marktwachstum</label>
+                <Select value={formData.marketGrowth} onValueChange={(value) => handleInputChange('marketGrowth', value)}>
+                  <SelectTrigger className="bg-slate-800 border-slate-600 text-slate-100 text-base py-3">
+                    <SelectValue placeholder="Wie entwickelt sich Ihr Markt?" className="text-slate-400" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-800 border-slate-600">
+                      <SelectItem value="stark_wachsend" className="text-slate-100 text-base">Stark wachsend (&gt;10%)</SelectItem>
+                    <SelectItem value="wachsend" className="text-slate-100 text-base">Wachsend (5-10%)</SelectItem>
+                    <SelectItem value="stabil" className="text-slate-100 text-base">Stabil (0-5%)</SelectItem>
+                    <SelectItem value="schrumpfend" className="text-slate-100 text-base">Schrumpfend</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
         )
@@ -375,42 +377,42 @@ const ProfessionalValuationTool = ({ isOpen }) => {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <Users className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-medium mb-2">Kontaktdaten</h3>
-              <p className="text-slate-400">Für die Zusendung Ihres detaillierten Bewertungsberichts</p>
+            <div className="text-center mb-10">
+              <Users className="w-16 h-16 text-slate-200 mx-auto mb-6" />
+              <h3 className="text-3xl font-medium mb-3 text-white">Kontaktdaten</h3>
+              <p className="text-lg text-slate-300">Für die Zusendung Ihres detaillierten Bewertungsberichts</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium mb-2">Name *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">Name *</label>
                 <Input
                   value={formData.contactName}
                   onChange={(e) => handleInputChange('contactName', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
-                  placeholder="Ihr Name"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
+                  placeholder="Max Mustermann"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">E-Mail *</label>
+                <label className="block text-base font-medium mb-3 text-slate-200">E-Mail *</label>
                 <Input
                   type="email"
                   value={formData.contactEmail}
                   onChange={(e) => handleInputChange('contactEmail', e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-slate-100"
-                  placeholder="ihre.email@beispiel.de"
+                  className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
+                  placeholder="max@unternehmen.de"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Telefon</label>
+              <label className="block text-base font-medium mb-3 text-slate-200">Telefon (optional)</label>
               <Input
                 type="tel"
                 value={formData.contactPhone}
                 onChange={(e) => handleInputChange('contactPhone', e.target.value)}
-                className="bg-slate-800 border-slate-700 text-slate-100"
-                placeholder="+49 (0) 89 123 456 789"
+                className="bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400 text-base py-3"
+                placeholder="+49 89 123 456 789"
               />
             </div>
 
@@ -530,24 +532,24 @@ const ProfessionalValuationTool = ({ isOpen }) => {
       {renderStep()}
 
       {currentStep < 5 && (
-        <div className="flex justify-between mt-8">
+        <div className="flex justify-between mt-12">
           <Button
             variant="outline"
             onClick={prevStep}
             disabled={currentStep === 1}
-            className="border-slate-600 text-slate-300 hover:bg-slate-800 disabled:opacity-50"
+            className="border-slate-600 text-slate-200 hover:bg-slate-800 disabled:opacity-50 text-base py-3 px-6"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-5 h-5 mr-2" />
             Zurück
           </Button>
           
           <Button
             onClick={nextStep}
             disabled={!isStepValid()}
-            className="bg-slate-100 hover:bg-white text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-slate-600 hover:bg-slate-500 text-white disabled:opacity-50 disabled:cursor-not-allowed text-base py-3 px-6"
           >
             {currentStep === 4 ? 'Bewertung berechnen' : 'Weiter'}
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
       )}

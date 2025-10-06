@@ -145,9 +145,8 @@ function App() {
               Unternehmenswert berechnen
             </Button>
             <Button 
-              variant="outline" 
               onClick={openContactForm}
-              className="border-slate-500 text-slate-100 hover:bg-slate-800/50 hover:text-white hover:border-slate-400 px-10 py-4 text-lg font-medium transition-all duration-300"
+              className="bg-slate-600 hover:bg-slate-500 text-slate-100 hover:text-white border border-slate-500 hover:border-slate-400 px-10 py-4 text-lg font-medium transition-all duration-300"
             >
               Kostenloses Erstgespräch
             </Button>
@@ -214,9 +213,8 @@ function App() {
                 </Button>
                 <br />
                 <Button 
-                  variant="outline" 
                   onClick={openValuationTool}
-                  className="border-slate-500 text-slate-200 hover:bg-slate-800/50 hover:text-white hover:border-slate-400 px-8 py-3 font-medium transition-all duration-300 w-full sm:w-auto"
+                  className="bg-slate-600 hover:bg-slate-500 text-slate-100 hover:text-white border border-slate-500 hover:border-slate-400 px-8 py-3 font-medium transition-all duration-300 w-full sm:w-auto"
                 >
                   Wachstumspotential ermitteln
                 </Button>
@@ -330,9 +328,8 @@ function App() {
                 </Button>
                 <br />
                 <Button 
-                  variant="outline" 
                   onClick={openValuationTool}
-                  className="border-slate-500 text-slate-200 hover:bg-slate-800/50 hover:text-white hover:border-slate-400 px-8 py-3 font-medium transition-all duration-300 w-full sm:w-auto"
+                  className="bg-slate-600 hover:bg-slate-500 text-slate-100 hover:text-white border border-slate-500 hover:border-slate-400 px-8 py-3 font-medium transition-all duration-300 w-full sm:w-auto"
                 >
                   Unternehmenswert ermitteln
                 </Button>
@@ -563,9 +560,8 @@ function App() {
               Kostenloses Erstgespräch
             </Button>
             <Button 
-              variant="outline" 
               onClick={openValuationTool}
-              className="border-slate-500 text-slate-100 hover:bg-slate-800/50 hover:text-white hover:border-slate-400 px-10 py-4 text-lg font-medium transition-all duration-300"
+              className="bg-slate-600 hover:bg-slate-500 text-slate-100 hover:text-white border border-slate-500 hover:border-slate-400 px-10 py-4 text-lg font-medium transition-all duration-300"
             >
               Unternehmenswert berechnen
             </Button>
@@ -643,9 +639,9 @@ function App() {
 
       {/* Valuation Tool Dialog */}
       <Dialog open={showValuationTool} onOpenChange={setShowValuationTool}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-6xl max-h-[95vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-light">Professionelle Unternehmensbewertung</DialogTitle>
+            <DialogTitle className="text-3xl font-light text-white">Professionelle Unternehmensbewertung</DialogTitle>
           </DialogHeader>
           <ProfessionalValuationTool isOpen={showValuationTool} />
         </DialogContent>
