@@ -30,6 +30,8 @@ import './App.css'
 function App() {
   const [showCookieBanner, setShowCookieBanner] = useState(true)
   const [showPrivacyModal, setShowPrivacyModal] = useState(false)
+  const [showImpressumModal, setShowImpressumModal] = useState(false)
+  const [showCookieSettingsModal, setShowCookieSettingsModal] = useState(false)
   const [showContactForm, setShowContactForm] = useState(false)
   const [showValuationTool, setShowValuationTool] = useState(false)
 
@@ -639,9 +641,9 @@ function App() {
 
       {/* Valuation Tool Dialog */}
       <Dialog open={showValuationTool} onOpenChange={setShowValuationTool}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-6xl max-h-[95vh] overflow-y-auto">
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-[95vw] w-[95vw] max-h-[95vh] h-[95vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-3xl font-light text-white">Professionelle Unternehmensbewertung</DialogTitle>
+            <DialogTitle className="text-4xl font-light text-white mb-4">Professionelle Unternehmensbewertung</DialogTitle>
           </DialogHeader>
           <ProfessionalValuationTool isOpen={showValuationTool} />
         </DialogContent>
@@ -711,12 +713,177 @@ function App() {
         </DialogContent>
       </Dialog>
 
+      {/* Footer */}
+      <footer className="bg-slate-900 border-t border-slate-800 py-8">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <p className="text-slate-400 text-sm">
+                © 2024 Leibinger Asset Management. Alle Rechte vorbehalten.
+              </p>
+            </div>
+            <div className="flex space-x-6">
+              <Button
+                variant="ghost"
+                onClick={() => setShowImpressumModal(true)}
+                className="text-slate-400 hover:text-white text-sm"
+              >
+                Impressum
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setShowPrivacyModal(true)}
+                className="text-slate-400 hover:text-white text-sm"
+              >
+                Datenschutz
+              </Button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Impressum Modal */}
+      <Dialog open={showImpressumModal} onOpenChange={setShowImpressumModal}>
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-white">Impressum</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 text-slate-300">
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Angaben gemäß § 5 TMG</h3>
+              <p className="leading-relaxed">
+                <strong>Leibinger Asset Management</strong><br />
+                Musterstraße 123<br />
+                80331 München<br />
+                Deutschland
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Kontakt</h3>
+              <p className="leading-relaxed">
+                Telefon: +49 (0) 89 123 456 789<br />
+                E-Mail: fl@leibinger-am.de
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Vertretungsberechtigte Geschäftsführung</h3>
+              <p className="leading-relaxed">
+                Florian Leibinger
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Registereintrag</h3>
+              <p className="leading-relaxed">
+                Eintragung im Handelsregister<br />
+                Registergericht: Amtsgericht München<br />
+                Registernummer: HRB 123456
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Umsatzsteuer-ID</h3>
+              <p className="leading-relaxed">
+                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+                DE123456789
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Haftungsausschluss</h3>
+              <p className="leading-relaxed">
+                Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+              </p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Cookie Settings Modal */}
+      <Dialog open={showCookieSettingsModal} onOpenChange={setShowCookieSettingsModal}>
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-white">Cookie-Einstellungen</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 text-slate-300">
+            <div>
+              <h3 className="text-lg font-medium mb-3 text-white">Cookie-Kategorien</h3>
+              <p className="leading-relaxed mb-4">
+                Wir verwenden verschiedene Arten von Cookies auf unserer Website. Sie können Ihre Einwilligung für jede Kategorie einzeln verwalten.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-slate-800 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-white">Technisch notwendige Cookies</h4>
+                  <p className="text-sm text-slate-400">Diese Cookies sind für die Grundfunktionen der Website erforderlich.</p>
+                </div>
+                <div className="text-green-400 font-medium">Immer aktiv</div>
+              </div>
+              
+              <div className="flex items-center justify-between p-4 bg-slate-800 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-white">Analyse-Cookies</h4>
+                  <p className="text-sm text-slate-400">Helfen uns, die Website zu verbessern und das Nutzererlebnis zu optimieren.</p>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-slate-600 text-slate-300"
+                >
+                  Deaktiviert
+                </Button>
+              </div>
+              
+              <div className="flex items-center justify-between p-4 bg-slate-800 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-white">Marketing-Cookies</h4>
+                  <p className="text-sm text-slate-400">Werden verwendet, um personalisierte Werbung anzuzeigen.</p>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-slate-600 text-slate-300"
+                >
+                  Deaktiviert
+                </Button>
+              </div>
+            </div>
+            
+            <div className="flex space-x-4 pt-4">
+              <Button
+                onClick={() => {
+                  setShowCookieSettingsModal(false)
+                  setShowCookieBanner(false)
+                }}
+                className="bg-slate-600 hover:bg-slate-500 text-white flex-1"
+              >
+                Auswahl speichern
+              </Button>
+              <Button
+                onClick={() => {
+                  setShowCookieSettingsModal(false)
+                  setShowCookieBanner(false)
+                }}
+                variant="outline"
+                className="border-slate-600 text-slate-300 flex-1"
+              >
+                Alle akzeptieren
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       {/* Cookie Banner */}
       {showCookieBanner && (
         <CookieBanner 
           onAcceptAll={() => setShowCookieBanner(false)}
           onRejectAll={() => setShowCookieBanner(false)}
-          onCustomize={() => setShowPrivacyModal(true)}
+          onCustomize={() => setShowCookieSettingsModal(true)}
           setShowPrivacyModal={setShowPrivacyModal}
         />
       )}

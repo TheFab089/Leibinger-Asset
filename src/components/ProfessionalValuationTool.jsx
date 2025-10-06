@@ -46,7 +46,7 @@ const ProfessionalValuationTool = ({ isOpen }) => {
     }))
   }
 
-  const calculateValuation = () => {
+  const calculateValuation = async () => {
     const revenue = parseFloat(formData.revenue) || 0
     const ebitda = parseFloat(formData.ebitda) || 0
     const revenueGrowth = parseFloat(formData.revenueGrowth) || 0
@@ -90,13 +90,62 @@ const ProfessionalValuationTool = ({ isOpen }) => {
     const minValuation = finalValuation * 0.8
     const maxValuation = finalValuation * 1.2
 
-    setValuationResult({
+    const result = {
       minValue: Math.round(minValuation),
       maxValue: Math.round(maxValuation),
       avgValue: Math.round(finalValuation),
       revenueMultiple: revenueMultiple.toFixed(1),
       ebitdaMultiple: ebitdaMultiple.toFixed(1)
-    })
+    }
+
+    setValuationResult(result)
+
+    // Send valuation data via FormSubmit
+    try {
+      await fetch('https://formsubmit.co/fl@leibinger-am.de', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `Neue Unternehmensbewertung von ${formData.contactName}`,
+          _captcha: 'false',
+          _template: 'table',
+          // Company data
+          'Unternehmensname': formData.companyName,
+          'Branche': formData.industry,
+          'Standort': formData.location,
+          'Gründungsjahr': formData.foundingYear,
+          'Rechtsform': formData.legalForm,
+          'Mitarbeiter': formData.employees,
+          'Geschäftsmodell': formData.businessModel,
+          // Financial data
+          'Jahresumsatz (EUR)': formData.revenue,
+          'Umsatzwachstum (%)': formData.revenueGrowth,
+          'EBITDA (EUR)': formData.ebitda,
+          'EBITDA-Marge (%)': formData.ebitdaMargin,
+          'Bilanzsumme (EUR)': formData.assets,
+          'Verbindlichkeiten (EUR)': formData.liabilities,
+          // Market data
+          'Marktposition': formData.marketPosition,
+          'Wettbewerbsvorteile': formData.competitiveAdvantage,
+          'Kundenbasis': formData.customerBase,
+          'Marktwachstum': formData.marketGrowth,
+          // Contact data
+          'Kontaktname': formData.contactName,
+          'E-Mail': formData.contactEmail,
+          'Telefon': formData.contactPhone,
+          // Valuation results
+          'Bewertung Min (EUR)': result.minValue.toLocaleString(),
+          'Bewertung Max (EUR)': result.maxValue.toLocaleString(),
+          'Bewertung Durchschnitt (EUR)': result.avgValue.toLocaleString(),
+          'Umsatz-Multiple': result.revenueMultiple,
+          'EBITDA-Multiple': result.ebitdaMultiple
+        })
+      })
+    } catch (error) {
+      console.error('Error sending valuation data:', error)
+    }
   }
 
   const nextStep = () => {
