@@ -613,6 +613,7 @@ function App() {
                 <br />
                 <Button 
                   variant="ghost" 
+                  onClick={() => setShowImpressumModal(true)}
                   className="text-slate-400 hover:text-slate-200 p-0 h-auto font-normal"
                 >
                   Impressum
