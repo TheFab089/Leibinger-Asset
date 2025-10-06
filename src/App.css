@@ -118,3 +118,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom overrides for monochromatic design */
+@layer utilities {
+  /* Remove all colored backgrounds and borders */
+  .monochrome-override {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  /* Ensure all buttons are monochromatic */
+  .btn-monochrome {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .btn-monochrome:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+  }
+  
+  /* Remove any colored elements */
+  * {
+    box-shadow: none !important;
+  }
+  
+  /* Override any debug/development colored elements */
+  [style*="background-color"]:not([style*="transparent"]):not([style*="rgba(0,0,0"]):not([style*="rgba(255,255,255"]) {
+    background-color: transparent !important;
+  }
+}
