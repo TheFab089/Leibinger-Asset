@@ -714,34 +714,7 @@ function App() {
         </DialogContent>
       </Dialog>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-800 py-8">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-slate-400 text-sm">
-                © 2024 Leibinger Asset Management. Alle Rechte vorbehalten.
-              </p>
-            </div>
-            <div className="flex space-x-6">
-              <Button
-                variant="ghost"
-                onClick={() => setShowImpressumModal(true)}
-                className="text-slate-400 hover:text-white text-sm"
-              >
-                Impressum
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => setShowPrivacyModal(true)}
-                className="text-slate-400 hover:text-white text-sm"
-              >
-                Datenschutz
-              </Button>
-            </div>
-          </div>
-        </div>
-      </footer>
+
 
       {/* Impressum Modal */}
       <Dialog open={showImpressumModal} onOpenChange={setShowImpressumModal}>
