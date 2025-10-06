@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog.jsx'
@@ -25,6 +25,12 @@ import backgroundVideo from './assets/LeibingerHomepage.mp4'
 import ContactForm from './components/ContactForm.jsx'
 import ProfessionalValuationTool from './components/ProfessionalValuationTool.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
+import MobileNavigation from './components/MobileNavigation.jsx'
+import ImpressumModal from './components/ImpressumModal.jsx'
+import SEOHead from './components/SEOHead.jsx'
+import ErweiterteDatenschutzerklaerung from './components/ErweiterteDatenschutzerklaerung.jsx'
+import { CookieWiderrufButton, ErweiterteCookieEinstellungen } from './components/CookieWiderrufButton.jsx'
+import FAQSection from './components/FAQSection.jsx'
 import './App.css'
 
 function App() {
@@ -34,6 +40,7 @@ function App() {
   const [showCookieSettingsModal, setShowCookieSettingsModal] = useState(false)
   const [showContactForm, setShowContactForm] = useState(false)
   const [showValuationTool, setShowValuationTool] = useState(false)
+  const [showExtendedCookieSettings, setShowExtendedCookieSettings] = useState(false)
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -47,6 +54,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      <SEOHead />
       {/* Header */}
       <header className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-sm z-50 border-b border-slate-800">
         <div className="container mx-auto px-6 py-4">
@@ -109,6 +117,13 @@ function App() {
                 Kontakt
               </Button>
             </nav>
+            
+            {/* Mobile Navigation */}
+            <MobileNavigation 
+              scrollToSection={scrollToSection}
+              openContactForm={openContactForm}
+              openValuationTool={openValuationTool}
+            />
           </div>
         </div>
       </header>
@@ -116,15 +131,13 @@ function App() {
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 px-6 overflow-hidden min-h-screen flex items-center">
         <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+          src={backgroundVideo} 
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-30"
-        >
-          <source src={backgroundVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950/70 z-10"></div>
         
         <div className="container mx-auto text-center relative z-20">
@@ -225,7 +238,7 @@ function App() {
             <div className="relative">
               <img 
                 src={businessGrowthImg} 
-                alt="Business Growth Meeting" 
+                alt="Geschäftswachstum durch strategische Partnerschaften - Leibinger Asset Management unterstützt Unternehmer bei der Skalierung" 
                 className="rounded-lg shadow-2xl w-full h-auto"
               />
             </div>
@@ -245,7 +258,7 @@ function App() {
             <div className="relative">
               <img 
                 src={businessHandshakeImg} 
-                alt="Business Partnership" 
+                alt="Strategische Unternehmensbeteiligung - Handschlag zwischen Geschäftspartnern als Symbol für vertrauensvolle Zusammenarbeit" 
                 className="rounded-lg shadow-2xl w-full h-auto"
               />
             </div>
@@ -314,33 +327,24 @@ function App() {
                 </li>
                 <li className="flex items-start gap-4">
                   <CheckCircle className="w-6 h-6 text-slate-300 mt-1 flex-shrink-0" />
-                  <span className="text-slate-200">Begleitung des Übergabeprozesses</span>
+                  <span className="text-slate-200">Begleitung bei Vertragsverhandlungen und Übergabe</span>
                 </li>
                 <li className="flex items-start gap-4">
                   <CheckCircle className="w-6 h-6 text-slate-300 mt-1 flex-shrink-0" />
-                  <span className="text-slate-200">Rechtliche und steuerliche Strukturierung</span>
+                  <span className="text-slate-200">Sicherstellung der Kontinuität und des Unternehmenswerts</span>
                 </li>
               </ul>
-              <div className="space-y-4">
-                <Button 
-                  onClick={openContactForm}
-                  className="bg-slate-700 hover:bg-slate-600 text-slate-100 hover:text-white border border-slate-600 hover:border-slate-500 px-8 py-3 font-medium transition-all duration-300 w-full sm:w-auto"
-                >
-                  Nachfolge-Erstgespräch vereinbaren
-                </Button>
-                <br />
-                <Button 
-                  onClick={openValuationTool}
-                  className="bg-slate-600 hover:bg-slate-500 text-slate-100 hover:text-white border border-slate-500 hover:border-slate-400 px-8 py-3 font-medium transition-all duration-300 w-full sm:w-auto"
-                >
-                  Unternehmenswert ermitteln
-                </Button>
-              </div>
+              <Button 
+                onClick={openContactForm}
+                className="bg-slate-700 hover:bg-slate-600 text-slate-100 hover:text-white border border-slate-600 hover:border-slate-500 px-8 py-3 font-medium transition-all duration-300"
+              >
+                Nachfolgeplanung starten
+              </Button>
             </div>
             <div className="relative">
               <img 
                 src={seniorBusinessmanImg} 
-                alt="Senior Businessman" 
+                alt="Erfahrener Unternehmer plant seine Nachfolge - Symbol für die Sicherung des Lebenswerks mit Leibinger Asset Management" 
                 className="rounded-lg shadow-2xl w-full h-auto"
               />
             </div>
@@ -348,127 +352,44 @@ function App() {
         </div>
       </section>
 
-      {/* Philosophy Section */}
+      {/* About Us Section */}
       <section id="about-us" className="py-24 px-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-16 leading-tight">
-            Mehr als nur ein Investor –<br />
-            <span className="font-medium">Wir sind Ihr Partner</span>
-          </h2>
-          <p className="text-xl text-slate-300 mb-16 max-w-4xl mx-auto leading-relaxed">
-            Als Asset Management Unternehmen haben wir es uns zur Aufgabe gemacht, den traditionellen Mittelstand in Bayern zu stärken. Wir kennen die Herausforderungen und die Leidenschaft, die hinter jedem Betrieb stecken.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-light mb-16">Unsere Philosophie</h2>
           <div className="grid md:grid-cols-3 gap-12">
-            <Card className="bg-slate-900/50 border-slate-800 hover:bg-slate-900/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <Handshake className="w-16 h-16 text-slate-300 mx-auto mb-6" />
-                <h3 className="text-2xl font-medium mb-4 text-white">Partnerschaft auf Augenhöhe</h3>
-                <p className="text-slate-400 leading-relaxed">Wir arbeiten mit Ihnen zusammen, nicht nur für Sie.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-slate-900/50 border-slate-800 hover:bg-slate-900/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <Building className="w-16 h-16 text-slate-300 mx-auto mb-6" />
-                <h3 className="text-2xl font-medium mb-4 text-white">Tiefes Branchenverständnis</h3>
-                <p className="text-slate-400 leading-relaxed">Wir sprechen die Sprache traditioneller Unternehmen.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-slate-900/50 border-slate-800 hover:bg-slate-900/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <TrendingUp className="w-16 h-16 text-slate-300 mx-auto mb-6" />
-                <h3 className="text-2xl font-medium mb-4 text-white">Nachhaltiger Erfolg</h3>
-                <p className="text-slate-400 leading-relaxed">Wir denken in Generationen, nicht in Quartalen.</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Mobile Slides */}
-          <div className="md:hidden overflow-x-auto">
-            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <TrendingUp className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Umsatz: 500K - 10M EUR</li>
-                    <li>• Mitarbeiter: 5 - 100</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Building className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Handwerk</li>
-                    <li>• Bau</li>
-                    <li>• Industrie</li>
-                    <li>• Dienstleistung</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <MapPin className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Bayern (Schwerpunkt)</li>
-                    <li>• München & Umgebung</li>
-                    <li>• Traditionelle Wirtschaftsregionen</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
+            <Card className="bg-slate-900 border-slate-800 text-center p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg hover:shadow-slate-700/50">
+              <CardContent>
+                <div className="flex justify-center mb-6">
+                  <div className="bg-slate-800 p-4 rounded-full">
                     <Handshake className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Mehrheitsbeteiligungen</li>
-                    <li>• Minderheitsbeteiligungen</li>
-                    <li>• Je nach Absprache</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
+                </div>
+                <h3 className="text-2xl font-medium mb-4">Partnerschaftlich</h3>
+                <p className="text-slate-400 leading-relaxed">Wir arbeiten auf Augenhöhe mit Ihnen zusammen und treffen Entscheidungen gemeinsam.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-slate-900 border-slate-800 text-center p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg hover:shadow-slate-700/50">
+              <CardContent>
+                <div className="flex justify-center mb-6">
+                  <div className="bg-slate-800 p-4 rounded-full">
                     <TrendingUp className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Etablierte Unternehmen</li>
-                    <li>• Junge Unternehmen</li>
-                    <li>• Start-ups mit Potenzial</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Target className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
+                </div>
+                <h3 className="text-2xl font-medium mb-4">Langfristig</h3>
+                <p className="text-slate-400 leading-relaxed">Unser Ziel ist die nachhaltige Entwicklung Ihres Unternehmens, nicht der schnelle Exit.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-slate-900 border-slate-800 text-center p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg hover:shadow-slate-700/50">
+              <CardContent>
+                <div className="flex justify-center mb-6">
+                  <div className="bg-slate-800 p-4 rounded-full">
+                    <Users className="w-8 h-8 text-slate-300" />
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Nachfolgeproblematik</li>
-                    <li>• Wachstumsfinanzierung</li>
-                    <li>• Überwindung von Stagnation</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+                <h3 className="text-2xl font-medium mb-4">Persönlich</h3>
+                <p className="text-slate-400 leading-relaxed">Sie haben einen festen Ansprechpartner, der Sie und Ihr Unternehmen genau kennt.</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -477,542 +398,81 @@ function App() {
       <section id="investment-profile" className="py-24 px-6 bg-slate-900/50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight">
-              Unser <span className="font-medium">Investitionsprofil</span>
-            </h2>
-            <p className="text-xl text-slate-300">Passgenaue Lösungen für Ihr Unternehmen</p>
+            <h2 className="text-4xl md:text-5xl font-light">Unser Investitionsprofil</h2>
           </div>
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <TrendingUp className="w-8 h-8 text-slate-300" />
-                  <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
-                </div>
-                <ul className="space-y-3 text-slate-300">
-                  <li>• Umsatz: 500K - 10M EUR</li>
-                  <li>• Mitarbeiter: 5 - 100</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <Building className="w-8 h-8 text-slate-300" />
-                  <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
-                </div>
-                <ul className="space-y-3 text-slate-300">
-                  <li>• Handwerk</li>
-                  <li>• Bau</li>
-                  <li>• Industrie</li>
-                  <li>• Dienstleistung</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <MapPin className="w-8 h-8 text-slate-300" />
-                  <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
-                </div>
-                <ul className="space-y-3 text-slate-300">
-                  <li>• Bayern (Schwerpunkt)</li>
-                  <li>• München & Umgebung</li>
-                  <li>• Traditionelle Wirtschaftsregionen</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <Handshake className="w-8 h-8 text-slate-300" />
-                  <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
-                </div>
-                <ul className="space-y-3 text-slate-300">
-                  <li>• Mehrheitsbeteiligungen</li>
-                  <li>• Minderheitsbeteiligungen</li>
-                  <li>• Je nach Absprache</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <TrendingUp className="w-8 h-8 text-slate-300" />
-                  <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
-                </div>
-                <ul className="space-y-3 text-slate-300">
-                  <li>• Etablierte Unternehmen</li>
-                  <li>• Junge Unternehmen</li>
-                  <li>• Start-ups mit Potenzial</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <Target className="w-8 h-8 text-slate-300" />
-                  <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
-                </div>
-                <ul className="space-y-3 text-slate-300">
-                  <li>• Nachfolgeproblematik</li>
-                  <li>• Wachstumsfinanzierung</li>
-                  <li>• Überwindung von Stagnation</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Mobile Slides */}
-          <div className="md:hidden overflow-x-auto">
-            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <TrendingUp className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+              <h3 className="text-3xl font-medium mb-8">Wonach wir suchen</h3>
+              <ul className="space-y-6">
+                <li className="flex items-start gap-4">
+                  <div className="bg-slate-800 p-3 rounded-full mt-1 flex-shrink-0">
+                    <Building className="w-6 h-6 text-slate-300" />
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Umsatz: 500K - 10M EUR</li>
-                    <li>• Mitarbeiter: 5 - 100</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Building className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
+                  <div>
+                    <h4 className="text-xl font-medium mb-1">Branche</h4>
+                    <p className="text-slate-400">Traditionelle Branchen wie Handwerk, Produktion, Handel und Dienstleistungen.</p>
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Handwerk</li>
-                    <li>• Bau</li>
-                    <li>• Industrie</li>
-                    <li>• Dienstleistung</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <MapPin className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="bg-slate-800 p-3 rounded-full mt-1 flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-slate-300" />
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Bayern (Schwerpunkt)</li>
-                    <li>• München & Umgebung</li>
-                    <li>• Traditionelle Wirtschaftsregionen</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Handshake className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
+                  <div>
+                    <h4 className="text-xl font-medium mb-1">Region</h4>
+                    <p className="text-slate-400">Fokus auf Bayern, um eine persönliche Betreuung zu gewährleisten.</p>
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Mehrheitsbeteiligungen</li>
-                    <li>• Minderheitsbeteiligungen</li>
-                    <li>• Je nach Absprache</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <TrendingUp className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="bg-slate-800 p-3 rounded-full mt-1 flex-shrink-0">
+                    <Target className="w-6 h-6 text-slate-300" />
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Etablierte Unternehmen</li>
-                    <li>• Junge Unternehmen</li>
-                    <li>• Start-ups mit Potenzial</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Target className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
+                  <div>
+                    <h4 className="text-xl font-medium mb-1">Umsatz</h4>
+                    <p className="text-slate-400">Unternehmen mit einem Jahresumsatz zwischen 1 Mio. und 10 Mio. EUR.</p>
                   </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Nachfolgeproblematik</li>
-                    <li>• Wachstumsfinanzierung</li>
-                    <li>• Überwindung von Stagnation</li>
-                  </ul>
-                </CardContent>
-              </Card>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-3xl font-medium mb-8">Unser Prozess</h3>
+              <ol className="relative border-l border-slate-700 space-y-10 ml-4">
+                <li className="ml-8">
+                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">1</span>
+                  <h4 className="text-xl font-medium mb-1">Kennenlernen</h4>
+                  <p className="text-slate-400">Unverbindliches Erstgespräch zum Austausch von Zielen und Visionen.</p>
+                </li>
+                <li className="ml-8">
+                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">2</span>
+                  <h4 className="text-xl font-medium mb-1">Analyse</h4>
+                  <p className="text-slate-400">Gemeinsame Analyse von Stärken, Schwächen und Potentialen.</p>
+                </li>
+                <li className="ml-8">
+                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">3</span>
+                  <h4 className="text-xl font-medium mb-1">Konzept</h4>
+                  <p className="text-slate-400">Entwicklung einer maßgeschneiderten Strategie für Ihr Unternehmen.</p>
+                </li>
+                <li className="ml-8">
+                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">4</span>
+                  <h4 className="text-xl font-medium mb-1">Umsetzung</h4>
+                  <p className="text-slate-400">Aktive Begleitung bei der Umsetzung der entwickelten Maßnahmen.</p>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Investment Process Section */}
-      <section className="py-24 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight text-white">
-              Unser Investitionsprozess
-            </h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              Transparent, professionell und partnerschaftlich – so gestalten wir unsere Beteiligungen.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">1</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Erstgespräch</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Unverbindliches Kennenlernen und Potenzialanalyse
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">2</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Due Diligence</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Detaillierte Prüfung und Bewertung des Unternehmens
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">3</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Verhandlung</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Faire Strukturierung der Beteiligung
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">4</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Partnerschaft</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Langfristige Zusammenarbeit und Entwicklung
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Mobile Slides */}
-          <div className="md:hidden overflow-x-auto">
-            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <TrendingUp className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Unternehmensgröße</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Umsatz: 500K - 10M EUR</li>
-                    <li>• Mitarbeiter: 5 - 100</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Building className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Zielbranchen</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Handwerk</li>
-                    <li>• Bau</li>
-                    <li>• Industrie</li>
-                    <li>• Dienstleistung</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <MapPin className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Geografischer Fokus</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Bayern (Schwerpunkt)</li>
-                    <li>• München & Umgebung</li>
-                    <li>• Traditionelle Wirtschaftsregionen</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Handshake className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Beteiligungsart</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Mehrheitsbeteiligungen</li>
-                    <li>• Minderheitsbeteiligungen</li>
-                    <li>• Je nach Absprache</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <TrendingUp className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Unternehmenssituation</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Etablierte Unternehmen</li>
-                    <li>• Junge Unternehmen</li>
-                    <li>• Start-ups mit Potenzial</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Target className="w-8 h-8 text-slate-300" />
-                    <h3 className="text-xl font-medium text-white">Investitionsanlässe</h3>
-                  </div>
-                  <ul className="space-y-3 text-slate-300">
-                    <li>• Nachfolgeproblematik</li>
-                    <li>• Wachstumsfinanzierung</li>
-                    <li>• Überwindung von Stagnation</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Investment Process Section */}
-      <section className="py-24 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight text-white">
-              Unser Investitionsprozess
-            </h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              Transparent, professionell und partnerschaftlich – so gestalten wir unsere Beteiligungen.
-            </p>
-          </div>
-          
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">1</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Erstgespräch</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Unverbindliches Kennenlernen und Potenzialanalyse
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">2</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Due Diligence</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Detaillierte Prüfung und Bewertung des Unternehmens
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">3</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Verhandlung</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Faire Strukturierung der Beteiligung
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">4</span>
-                </div>
-                <h3 className="text-xl font-medium text-white mb-4">Partnerschaft</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Langfristige Zusammenarbeit und Entwicklung
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Mobile Slides */}
-          <div className="md:hidden overflow-x-auto">
-            <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">1</span>
-                  </div>
-                  <h3 className="text-xl font-medium text-white mb-4">Erstgespräch</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    Unverbindliches Kennenlernen und Potenzialanalyse
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">2</span>
-                  </div>
-                  <h3 className="text-xl font-medium text-white mb-4">Due Diligence</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    Detaillierte Prüfung und Bewertung des Unternehmens
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">3</span>
-                  </div>
-                  <h3 className="text-xl font-medium text-white mb-4">Verhandlung</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    Faire Strukturierung der Beteiligung
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 w-80 flex-shrink-0">
-                <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">4</span>
-                  </div>
-                  <h3 className="text-xl font-medium text-white mb-4">Partnerschaft</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    Langfristige Zusammenarbeit und Entwicklung
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="py-24 px-6 bg-slate-900/50">
-        <div className="container mx-auto text-center max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight text-white">
-            Bereit für den nächsten Schritt?
-          </h2>
-          <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-            Lassen Sie uns über Ihr Unternehmen sprechen. Vereinbaren Sie noch heute ein kostenloses Erstgespräch oder nutzen Sie unsere professionelle Unternehmensbewertung.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button 
-              onClick={openContactForm}
-              className="bg-slate-700 hover:bg-slate-600 text-slate-100 hover:text-white border border-slate-600 hover:border-slate-500 px-10 py-4 text-lg font-medium transition-all duration-300"
-            >
-              Kostenloses Erstgespräch
-            </Button>
-            <Button 
-              onClick={openValuationTool}
-              className="bg-slate-600 hover:bg-slate-500 text-slate-100 hover:text-white border border-slate-500 hover:border-slate-400 px-10 py-4 text-lg font-medium transition-all duration-300"
-            >
-              Unternehmenswert berechnen
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Footer */}
-      <footer className="py-16 px-6 bg-slate-950 border-t border-slate-800">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div>
-              <img 
-                src={logoWhite} 
-                alt="LEIBINGER ASSET MANAGEMENT" 
-                className="h-8 w-auto mb-6 filter brightness-0 invert"
-              />
-              <p className="text-slate-400 leading-relaxed">
-                Ihr Partner für Wachstum, Beteiligung und Nachfolge im Mittelstand.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-medium mb-4 text-white">Kontakt</h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-400">+49 (0) 89 123 456 789</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-400">fl@leibinger-am.de</span>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-medium mb-4 text-white">Rechtliches</h4>
-              <div className="space-y-2">
-                <Button 
-                  variant="ghost" 
-                  onClick={() => setShowPrivacyModal(true)}
-                  className="text-slate-400 hover:text-slate-200 p-0 h-auto font-normal"
-                >
-                  Datenschutz
-                </Button>
-                <br />
-                <Button 
-                  variant="ghost" 
-                  onClick={() => setShowImpressumModal(true)}
-                  className="text-slate-400 hover:text-slate-200 p-0 h-auto font-normal"
-                >
-                  Impressum
-                </Button>
-              </div>
-            </div>
+      <footer className="bg-slate-900/50 border-t border-slate-800 py-12 px-6">
+        <div className="container mx-auto text-center text-slate-400">
+          <div className="flex justify-center gap-8 mb-8">
+            <a href="#" onClick={(e) => {e.preventDefault(); setShowImpressumModal(true);}} className="hover:text-white transition-colors">Impressum</a>
+            <a href="#" onClick={(e) => {e.preventDefault(); setShowPrivacyModal(true);}} className="hover:text-white transition-colors">Datenschutz</a>
+            <a href="#" onClick={(e) => {e.preventDefault(); openContactForm();}} className="hover:text-white transition-colors">Kontakt</a>
           </div>
-          
-          <div className="pt-8 border-t border-slate-800 text-center">
-            <p className="text-slate-500">
-              © 2024 Leibinger Asset Management. Alle Rechte vorbehalten.
-            </p>
-          </div>
+          <p>&copy; {new Date().getFullYear()} Leibinger Asset Management. Alle Rechte vorbehalten.</p>
         </div>
       </footer>
 
@@ -1022,7 +482,7 @@ function App() {
           <DialogHeader>
             <DialogTitle className="text-2xl font-light">Kostenloses Erstgespräch vereinbaren</DialogTitle>
           </DialogHeader>
-          <ContactForm isOpen={showContactForm} />
+          <ContactForm />
         </DialogContent>
       </Dialog>
 
@@ -1038,215 +498,49 @@ function App() {
 
       {/* Privacy Modal */}
       <Dialog open={showPrivacyModal} onOpenChange={setShowPrivacyModal}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-4xl h-[80vh] flex flex-col">
           <DialogHeader>
             <DialogTitle className="text-2xl font-light">Datenschutzerklärung</DialogTitle>
           </DialogHeader>
-          <div className="space-y-6 text-slate-300">
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">1. Verantwortliche Stelle</h3>
-              <p className="leading-relaxed mb-3">
-                Verantwortlich für die Datenverarbeitung auf dieser Website ist:
-              </p>
-              <p className="leading-relaxed">
-                <strong>Leibinger Asset Management</strong><br />
-                E-Mail: fl@leibinger-am.de
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">2. Cookies und Tracking</h3>
-              <p className="leading-relaxed mb-3">
-                Diese Website verwendet Cookies zur Verbesserung der Nutzererfahrung. Wir unterscheiden zwischen:
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Technisch notwendige Cookies:</strong> Ermöglichen grundlegende Funktionen der Website (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO)</li>
-                <li><strong>Analyse-Cookies:</strong> Helfen uns, die Website zu verbessern (nur mit Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO)</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">3. Kontaktformular</h3>
-              <p className="leading-relaxed">
-                Bei Nutzung des Kontaktformulars werden Ihre Angaben zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. 
-                Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">4. Ihre Rechte</h3>
-              <p className="leading-relaxed mb-3">
-                Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
-                <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
-                <li>Recht auf Löschung (Art. 17 DSGVO)</li>
-                <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                <li>Recht auf Widerspruch (Art. 21 DSGVO)</li>
-                <li>Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">5. Datensicherheit</h3>
-              <p className="leading-relaxed">
-                Wir verwenden geeignete technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, 
-                teilweisen oder vollständigen Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen.
-              </p>
-            </div>
+          <div className="flex-grow overflow-y-auto pr-4">
+            <ErweiterteDatenschutzerklaerung />
           </div>
         </DialogContent>
       </Dialog>
 
-
-
       {/* Impressum Modal */}
       <Dialog open={showImpressumModal} onOpenChange={setShowImpressumModal}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-white">Impressum</DialogTitle>
+            <DialogTitle className="text-2xl font-light">Impressum</DialogTitle>
           </DialogHeader>
-          <div className="space-y-6 text-slate-300">
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Angaben gemäß § 5 TMG</h3>
-              <p className="leading-relaxed">
-                <strong>Leibinger Asset Management GmbH</strong><br />
-                Herterichstr. 174<br />
-                81476 München<br />
-                Deutschland
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Kontakt</h3>
-              <p className="leading-relaxed">
-                E-Mail: fl@leibinger-am.de
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Vertretungsberechtigte Geschäftsführung</h3>
-              <p className="leading-relaxed">
-                Fabian Leibinger
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Registereintrag</h3>
-              <p className="leading-relaxed">
-                Eintragung im Handelsregister<br />
-                Registergericht: Amtsgericht München<br />
-                Registernummer: HRB 289101
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Umsatzsteuer-ID</h3>
-              <p className="leading-relaxed">
-                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: (Nicht angegeben im HR Register)
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Haftungsausschluss</h3>
-              <p className="leading-relaxed">
-                Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
-              </p>
-            </div>
-          </div>
+          <ImpressumModal />
         </DialogContent>
       </Dialog>
 
       {/* Cookie Settings Modal */}
-      <Dialog open={showCookieSettingsModal} onOpenChange={setShowCookieSettingsModal}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-2xl max-h-[80vh] overflow-y-auto">
+      <Dialog open={showExtendedCookieSettings} onOpenChange={setShowExtendedCookieSettings}>
+        <DialogContent className="bg-slate-900 border-slate-700 text-slate-100 max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-white">Cookie-Einstellungen</DialogTitle>
+            <DialogTitle className="text-2xl font-light">Cookie-Einstellungen</DialogTitle>
           </DialogHeader>
-          <div className="space-y-6 text-slate-300">
-            <div>
-              <h3 className="text-lg font-medium mb-3 text-white">Cookie-Kategorien</h3>
-              <p className="leading-relaxed mb-4">
-                Wir verwenden verschiedene Arten von Cookies auf unserer Website. Sie können Ihre Einwilligung für jede Kategorie einzeln verwalten.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-slate-800 rounded-lg">
-                <div>
-                  <h4 className="font-medium text-white">Technisch notwendige Cookies</h4>
-                  <p className="text-sm text-slate-400">Diese Cookies sind für die Grundfunktionen der Website erforderlich.</p>
-                </div>
-                <div className="text-green-400 font-medium">Immer aktiv</div>
-              </div>
-              
-              <div className="flex items-center justify-between p-4 bg-slate-800 rounded-lg">
-                <div>
-                  <h4 className="font-medium text-white">Analyse-Cookies</h4>
-                  <p className="text-sm text-slate-400">Helfen uns, die Website zu verbessern und das Nutzererlebnis zu optimieren.</p>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-slate-600 text-slate-300"
-                >
-                  Deaktiviert
-                </Button>
-              </div>
-              
-              <div className="flex items-center justify-between p-4 bg-slate-800 rounded-lg">
-                <div>
-                  <h4 className="font-medium text-white">Marketing-Cookies</h4>
-                  <p className="text-sm text-slate-400">Werden verwendet, um personalisierte Werbung anzuzeigen.</p>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-slate-600 text-slate-300"
-                >
-                  Deaktiviert
-                </Button>
-              </div>
-            </div>
-            
-            <div className="flex space-x-4 pt-4">
-              <Button
-                onClick={() => {
-                  setShowCookieSettingsModal(false)
-                  setShowCookieBanner(false)
-                }}
-                className="bg-slate-600 hover:bg-slate-500 text-white flex-1"
-              >
-                Auswahl speichern
-              </Button>
-              <Button
-                onClick={() => {
-                  setShowCookieSettingsModal(false)
-                  setShowCookieBanner(false)
-                }}
-                variant="outline"
-                className="border-slate-600 text-slate-300 flex-1"
-              >
-                Alle akzeptieren
-              </Button>
-            </div>
-          </div>
+          <ErweiterteCookieEinstellungen />
         </DialogContent>
       </Dialog>
 
-      {/* Cookie Banner */}
+      <CookieWiderrufButton onClick={() => setShowExtendedCookieSettings(true)} />
+
       {showCookieBanner && (
         <CookieBanner 
           onAcceptAll={() => setShowCookieBanner(false)}
           onRejectAll={() => setShowCookieBanner(false)}
-          onCustomize={() => setShowCookieSettingsModal(true)}
+          onCustomize={() => setShowExtendedCookieSettings(true)}
           setShowPrivacyModal={setShowPrivacyModal}
         />
       )}
     </div>
-  )
+  );
 }
 
 export default App
+
