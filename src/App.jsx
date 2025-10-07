@@ -394,75 +394,9 @@ function App() {
         </div>
       </section>
 
-      {/* Investment Profile Section */}
-      <section id="investment-profile" className="py-24 px-6 bg-slate-900/50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light">Unser Investitionsprofil</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <h3 className="text-3xl font-medium mb-8">Wonach wir suchen</h3>
-              <ul className="space-y-6">
-                <li className="flex items-start gap-4">
-                  <div className="bg-slate-800 p-3 rounded-full mt-1 flex-shrink-0">
-                    <Building className="w-6 h-6 text-slate-300" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-medium mb-1">Branche</h4>
-                    <p className="text-slate-400">Traditionelle Branchen wie Handwerk, Produktion, Handel und Dienstleistungen.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="bg-slate-800 p-3 rounded-full mt-1 flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-slate-300" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-medium mb-1">Region</h4>
-                    <p className="text-slate-400">Fokus auf Bayern, um eine persönliche Betreuung zu gewährleisten.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="bg-slate-800 p-3 rounded-full mt-1 flex-shrink-0">
-                    <Target className="w-6 h-6 text-slate-300" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-medium mb-1">Umsatz</h4>
-                    <p className="text-slate-400">Unternehmen mit einem Jahresumsatz zwischen 1 Mio. und 10 Mio. EUR.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-3xl font-medium mb-8">Unser Prozess</h3>
-              <ol className="relative border-l border-slate-700 space-y-10 ml-4">
-                <li className="ml-8">
-                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">1</span>
-                  <h4 className="text-xl font-medium mb-1">Kennenlernen</h4>
-                  <p className="text-slate-400">Unverbindliches Erstgespräch zum Austausch von Zielen und Visionen.</p>
-                </li>
-                <li className="ml-8">
-                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">2</span>
-                  <h4 className="text-xl font-medium mb-1">Analyse</h4>
-                  <p className="text-slate-400">Gemeinsame Analyse von Stärken, Schwächen und Potentialen.</p>
-                </li>
-                <li className="ml-8">
-                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">3</span>
-                  <h4 className="text-xl font-medium mb-1">Konzept</h4>
-                  <p className="text-slate-400">Entwicklung einer maßgeschneiderten Strategie für Ihr Unternehmen.</p>
-                </li>
-                <li className="ml-8">
-                  <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-slate-800 rounded-full ring-8 ring-slate-900/50 text-slate-300 font-medium">4</span>
-                  <h4 className="text-xl font-medium mb-1">Umsetzung</h4>
-                  <p className="text-slate-400">Aktive Begleitung bei der Umsetzung der entwickelten Maßnahmen.</p>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <FAQSection />
+
+      {/* <FAQSection /> */}
 
       {/* Footer */}
       <footer className="bg-slate-900/50 border-t border-slate-800 py-12 px-6">
